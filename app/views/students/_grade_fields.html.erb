@@ -1,0 +1,11 @@
+<div class="nested-fields">
+  <div class="form-group">
+  <%= f.label :subject, "Subjects" %>
+  <%= f.select :subject, Grade.subjects.keys.map { |subject| [subject.humanize, subject] }, {}, class: 'form-control' %>
+  </div>
+
+  <%= f.input :score %>
+  <%= f.input :semester %>
+  <%= f.input :comments %>
+  <%= link_to_remove_association "Remove Grade", f ,class: "btn btn-warning float-end "%>
+</div>

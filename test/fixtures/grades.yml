@@ -2,8 +2,14 @@
 
 one:
   subject: MyString
-  grade: 1
+  score: 1.5
+  semester: MyString
+  comments: MyText
+  student: one
 
 two:
   subject: MyString
-  grade: 1
+  score: 1.5
+  semester: MyString
+  comments: MyText
+  student: two

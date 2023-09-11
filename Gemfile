@@ -5,6 +5,12 @@ ruby "3.2.2"
 
 gem 'bootstrap', '~> 5.3', '>= 5.3.1'
 
+gem 'cocoon', '~> 1.2', '>= 1.2.15'
+
+gem 'foreman', github: 'ddollar/foreman'
+
+gem 'simple_form', '~> 5.2'
+
 gem 'jquery-rails'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

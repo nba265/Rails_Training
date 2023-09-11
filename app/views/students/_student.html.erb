@@ -1,0 +1,23 @@
+<div id="<%= dom_id student %>">
+  <thead>
+    <tr >
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= student.id %></th>
+      <td><%= student.name %></td>
+      <td>
+        <%= link_to "Edit this student", edit_student_path(student), class: "btn btn-primary" %>
+        <%= link_to "Show this student", student, class: "btn btn-primary" %>
+        <%= link_to "Destroy this student", student, class: "btn btn-primary" , data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+      </td>
+    </tr>
+  </tbody>
+</div>

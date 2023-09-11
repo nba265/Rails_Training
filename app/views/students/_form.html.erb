@@ -1,47 +1,19 @@
-<%= form_with model: student do |form| %>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-    <% student.errors.full_messages_for(:name).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-  <div>
-    <%= form.label :age %><br>
-    <%= form.number_field :age %><br>
-    <% student.errors.full_messages_for(:age).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-  <div>
-    <%= form.label :phone_number %><br>
-    <%= form.text_field :phone_number %>
-    <% student.errors.full_messages_for(:phone_number).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-  <div>
-    <%= form.label :grades %>
-    <%= form.fields_for :grades do |g| %>
-      <div >
-        <%= g.label :subject %>
-        <%= g.select :subject, Grade.subjects.values %>
+<%= simple_form_for(@student) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <h3>Grades</h3>
+    <div id="grades">
+      <%= f.simple_fields_for :grades do |grade| %>
+        <%= render "grade_fields", f: grade %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association "Add Grade", f, :grades , class: "btn btn-primary"%>
       </div>
-      <div>
-        <%= g.label :score %>
-        <%= g.number_field :score %>
-      </div>
-      <div>
-        <%= g.label :semester %>
-        <%= g.number_field :semester %>
-      </div>
-      <div>
-        <%= g.label :comments %>
-        <%= g.text_field :comments %>
-      </div>
-    <% end %>
+    </div>
   </div>
-  <div>
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-success mt-2" %>
   </div>
 <% end %>

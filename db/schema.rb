@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_082204) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_182500) do
   create_table "grades", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "subject"
-    t.decimal "score", precision: 10
-    t.integer "semester"
-    t.string "comments"
-    t.bigint "student_id"
+    t.float "score"
+    t.string "semester"
+    t.text "comments"
+    t.bigint "student_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_grades_on_student_id"
@@ -24,8 +24,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_082204) do
 
   create_table "students", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.integer "age"
-    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

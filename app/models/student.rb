@@ -1,7 +1,11 @@
 class Student < ApplicationRecord
-  has_many :grades
-  validates :phone_number, format: { with: /\A\d{10}\z/, message: 'Invalid phone number' }
+  validates :name, presence: true
 
-  accepts_nested_attributes_for :grades, allow_destroy: true, reject_if: proc { |attributes| attributes['score'].nil? }
+  has_many :grades, dependent: :destroy
+  accepts_nested_attributes_for :grades, reject_if: :duplicate_grade?, allow_destroy: true
 
+  def duplicate_grade?(attributes)
+    subject = attributes['subject']
+    self.grades.any? { |grade| grade.subject == subject }
+  end
 end

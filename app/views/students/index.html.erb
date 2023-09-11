@@ -1,33 +1,10 @@
-<h1 class = 'text-center' >List Student</h1>
-<div class ="text-center">
-  <%= link_to "New Student", new_student_path, class: "btn btn-primary m-2" %>
-  <table id = "student-list" class = 'table mx-auto table-striped table-bordered table-condensed table-responsive'>
-    <thead>
-      <tr >
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Age</th>
-        <th scope="col">Phone Number</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @students.each do |student| %>
-        <tr>
-          <th scope="row"><%= student.id %></th>
-          <td><%= student.name %></td>
-          <td><%= student.age %></td>
-          <td><%= student.phone_number %></td>
-          <td>
-            <%= link_to "Show", student_path(student), class: "btn btn-primary" %>
-            <%= link_to "Edit", edit_student_path(student), class: "btn btn-primary" %>
-            <%= link_to "Destroy", student_path(student.id), class: "btn btn-primary" , data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
+<p style="color: green"><%= notice %></p>
+<h1 class="text-center">Students</h1>
+<%= link_to "New student", new_student_path, class: "btn btn-primary m-2" %>
+<div id="students">
+  <table class = 'table mx-auto table-striped table-bordered table-condensed table-responsive'>
+    <% @students.each do |student| %>
+      <%= render student %>
+    <% end %>
   </table>
 </div>
